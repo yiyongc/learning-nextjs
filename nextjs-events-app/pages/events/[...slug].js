@@ -1,3 +1,5 @@
+import Head from "next/head";
+
 import { useRouter } from "next/dist/client/router";
 import EventList from "../../components/events/event-list";
 import ResultsTitle from "../../components/events/results-title";
@@ -28,8 +30,20 @@ function FilteredEventsPage() {
     }
   }, [data]);
 
+  let pageHeadData = (
+    <Head>
+      <title>Filtered Events</title>
+      <meta name="description" content="A list of filtered events" />
+    </Head>
+  );
+
   if (!loadedEvents) {
-    return <p className="center">Loading...</p>;
+    return (
+      <>
+        {pageHeadData}
+        <p className="center">Loading...</p>
+      </>
+    );
   }
 
   let numYear, numMonth;
@@ -37,6 +51,16 @@ function FilteredEventsPage() {
     numYear = +filterData[0];
     numMonth = +filterData[1];
   }
+
+  pageHeadData = (
+    <Head>
+      <title>Filtered Events</title>
+      <meta
+        name="description"
+        content={`All events for ${numMonth}/${numYear}`}
+      />
+    </Head>
+  );
 
   if (
     error ||
@@ -49,6 +73,7 @@ function FilteredEventsPage() {
   ) {
     return (
       <>
+        {pageHeadData}
         <ErrorAlert>Invalid filter. Please adjust your values!</ErrorAlert>
         <div className="center">
           <Button link="/events">Show All Events</Button>
@@ -68,6 +93,7 @@ function FilteredEventsPage() {
   if (!filteredEvents || filteredEvents.length === 0) {
     return (
       <>
+        {pageHeadData}
         <ErrorAlert>No events found for chosen filter!</ErrorAlert>;
         <div className="center">
           <Button link="/events">Show All Events</Button>
@@ -80,6 +106,7 @@ function FilteredEventsPage() {
 
   return (
     <>
+      {pageHeadData}
       <ResultsTitle date={date} />
       <EventList items={filteredEvents} />
     </>
