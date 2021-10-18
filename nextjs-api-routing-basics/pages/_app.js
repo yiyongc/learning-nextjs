@@ -1,9 +1,7 @@
-function HomePage() {
-  return (
-    <div>
-      <h1>The Home Page</h1>
-    </div>
-  );
+import "../styles/globals.css";
+
+function MyApp({ Component, pageProps }) {
+  return <Component {...pageProps} />;
 }
 
-export default HomePage;
+export default MyApp;
