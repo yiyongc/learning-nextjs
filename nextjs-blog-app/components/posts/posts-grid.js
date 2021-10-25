@@ -2,7 +2,6 @@ import PostItem from "./post-item";
 import styles from "./posts-grid.module.css";
 
 function PostsGrid(props) {
-  console.log(props);
   const { posts } = props;
 
   return (
