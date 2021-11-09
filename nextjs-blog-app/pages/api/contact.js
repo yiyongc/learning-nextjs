@@ -25,7 +25,7 @@ async function handler(req, res) {
     };
 
     // Store it in a database
-    const databaseName = "my-site";
+    const databaseName = process.env.mongodb_database;
     const mongoConnectionUrl = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.r8bzz.mongodb.net/${databaseName}?retryWrites=true&w=majority`;
     let client;
 

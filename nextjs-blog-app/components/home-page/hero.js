@@ -12,10 +12,10 @@ function Hero() {
           height={300}
         />
       </div>
-      <h1>Hi, I'm Yi Yong</h1>
+      <h1>Hi, I&apos;m Yi Yong</h1>
       <p>
-        I blog about development stuff and life. Mainly what I'm learning or
-        working on personally.
+        I blog about development stuff and life. Mainly what I&apos;m learning
+        or working on personally.
       </p>
     </section>
   );
